@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+void main(){
+  runApp(Myapp());
+}
+class Myapp extends StatelessWidget {
+  const Myapp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Homepage(),
+    );
+  }
+}
+class Homepage extends StatefulWidget {
+  const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
+  int currentIndex=0;
+  final List<Widget> pages=[
+    Firstpage(),
+    Secondpage(),
+    Thirdpage(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BottomNavigationBar'),
+      ),
+      body: pages[currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex=0,
+        onTap: (index){
+          setState(() {
+            currentIndex=index;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(icon:Icon(Icons.home),
+          label: 'Home',
+          ),
+          BottomNavigationBarItem(icon:Icon(Icons.search),
+            label: 'search',
+          ),
+          BottomNavigationBarItem(icon:Icon(Icons.settings),
+            label: 'setting',
+          ),
+        ],
+      ),
+
+    );
+  }
+}
+class Firstpage extends StatelessWidget {
+  const Firstpage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('first page'),
+    );
+  }
+}
+class Secondpage extends StatelessWidget {
+  const Secondpage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('second page'),
+    );
+  }
+}
+class Thirdpage extends StatelessWidget {
+  const Thirdpage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('third page'),
+    );
+  }
+}
+
+
+
+
